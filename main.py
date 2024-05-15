@@ -65,6 +65,3 @@ def fetch_nasa_epic(count):
         with open(filename, "wb") as file:
             file.write(response.content)
             dowload_image += 1
-
-
-
