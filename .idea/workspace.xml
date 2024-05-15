@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dfa73050-bc3f-4f6f-833c-0b9fd7fe4ce0" name="Changes" comment="Download photos from spacex and NASA">
-      <change afterPath="$PROJECT_DIR$/tgbot/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+    <list default="true" id="dfa73050-bc3f-4f6f-833c-0b9fd7fe4ce0" name="Changes" comment="publish text to Telegram channel.">
+      <change beforePath="$PROJECT_DIR$/tgbot/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/tgbot/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,11 +72,20 @@
       <option name="project" value="LOCAL" />
       <updated>1715801448925</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="publish text to Telegram channel.">
+      <option name="closed" value="true" />
+      <created>1715803116602</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715803116602</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Download photos from spacex and NASA" />
-    <option name="LAST_COMMIT_MESSAGE" value="Download photos from spacex and NASA" />
+    <MESSAGE value="publish text to Telegram channel." />
+    <option name="LAST_COMMIT_MESSAGE" value="publish text to Telegram channel." />
   </component>
 </project>
