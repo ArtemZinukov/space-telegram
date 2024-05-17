@@ -22,8 +22,8 @@ def fetch_nasa_epic():
             break
         photo = image.get("image")
         date = image.get("date")
-        adate = datetime.strptime(date, "%Y-%m-%d %H:%M:%S").date()
-        formated_date = adate.strftime("%Y/%m/%d")
+        formated_datetime = datetime.strptime(date, "%Y-%m-%d %H:%M:%S").date()
+        formated_date = formated_datetime.strftime("%Y/%m/%d")
         url = f"https://api.nasa.gov/EPIC/archive/natural/{formated_date}/png/{photo}.png"
         filename = f"images/nasa_epic{image_name}.png"
         response = requests.get(url, params=params)
