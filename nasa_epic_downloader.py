@@ -1,24 +1,22 @@
-import requests
-from environs import Env
+import argparse
 from datetime import datetime
 
-from main import create_parser
+import requests
+from environs import Env
+
+from scripts import writing_to_file
 
 
 def fetch_nasa_epic():
-    parser = create_parser()
-    parser.add_argument('count', default=3, help="Введите количество фотографий, которые хотите вывести",
-                        type=int)
-    parser_arg = parser.parse_args()
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {
-        "api_key": env.str("NASA_TOKEN")
+        "api_key": nasa_token
     }
     response = requests.get(url, params=params)
-    response_data = response.json()
-    download_image = 0
-    for image_name, image in enumerate(response_data):
-        if download_image >= parser_arg.count:
+    decoded_response = response.json()
+    downloaded_image = 0
+    for image_name, image in enumerate(decoded_response):
+        if downloaded_image >= parser_arg.count:
             break
         photo = image.get("image")
         date = image.get("date")
@@ -26,14 +24,17 @@ def fetch_nasa_epic():
         formated_date = formated_datetime.strftime("%Y/%m/%d")
         url = f"https://api.nasa.gov/EPIC/archive/natural/{formated_date}/png/{photo}.png"
         filename = f"images/nasa_epic{image_name}.png"
-        response = requests.get(url, params=params)
-        response.raise_for_status()
-        with open(filename, "wb") as file:
-            file.write(response.content)
-            download_image += 1
+        writing_to_file(url, filename, params)
+        downloaded_image += 1
 
 
 if __name__ == "__main__":
     env = Env()
     env.read_env()
+    parser = argparse.ArgumentParser(prog='Nasa_epic_downloader', description='Позволяет вывести нужное количество'
+                                                                              'фотографий земли,')
+    parser.add_argument('count', default=3, help="Введите количество фотографий, которые хотите вывести",
+                        type=int)
+    parser_arg = parser.parse_args()
+    nasa_token = env.str("NASA_TOKEN")
     fetch_nasa_epic()
