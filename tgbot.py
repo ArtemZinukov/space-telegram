@@ -6,7 +6,7 @@ import telegram
 from environs import Env
 
 
-def send_messages(chat_id):
+def send_messages(bot, chat_id, parser_args):
     document_dir = os.listdir("./images")
     while document_dir:
         random.shuffle(document_dir)
@@ -19,7 +19,7 @@ def send_messages(chat_id):
             time.sleep(parser_args.time)
 
 
-if __name__ == "__main__":
+def main():
     env = Env()
     env.read_env()
     bot = telegram.Bot(token=env.str("TG_BOT_TOKEN"))
@@ -28,4 +28,8 @@ if __name__ == "__main__":
                         type=int)
     parser_args = parser.parse_args()
     tg_chat_id = env.str("TG_CHAT_ID")
-    send_messages(tg_chat_id)
+    send_messages(bot, tg_chat_id, parser_args)
+
+
+if __name__ == "__main__":
+    main()
