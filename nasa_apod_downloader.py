@@ -5,10 +5,10 @@ from environs import Env
 from scripts import get_file_extension, write_to_file
 
 
-def fetch_nasa_apod(parser_args, token):
+def fetch_nasa_apod(count, token):
     url = "https://api.nasa.gov/planetary/apod"
     params = {
-        "count": parser_args.count,
+        "count": count,
         "api_key": token
     }
     response = requests.get(url, params=params)
@@ -30,7 +30,7 @@ def main():
                         type=int)
     parser_args = parser.parse_args()
     nasa_token = env.str("NASA_TOKEN")
-    fetch_nasa_apod(parser_args, nasa_token)
+    fetch_nasa_apod(parser_args.count, nasa_token)
 
 
 if __name__ == "__main__":

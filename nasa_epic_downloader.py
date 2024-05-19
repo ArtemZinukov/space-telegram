@@ -7,7 +7,7 @@ from environs import Env
 from scripts import write_to_file
 
 
-def fetch_nasa_epic(parser_arg, token):
+def fetch_nasa_epic(count, token):
     url = "https://api.nasa.gov/EPIC/api/natural"
     params = {
         "api_key": token
@@ -16,7 +16,7 @@ def fetch_nasa_epic(parser_arg, token):
     decoded_response = response.json()
     downloaded_image = 0
     for image_name, image in enumerate(decoded_response):
-        if downloaded_image >= parser_arg.count:
+        if downloaded_image >= count:
             break
         photo = image.get("image")
         date = image.get("date")
@@ -37,7 +37,7 @@ def main():
                         type=int)
     parser_arg = parser.parse_args()
     nasa_token = env.str("NASA_TOKEN")
-    fetch_nasa_epic(parser_arg, nasa_token)
+    fetch_nasa_epic(parser_arg.count, nasa_token)
 
 
 if __name__ == "__main__":

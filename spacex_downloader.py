@@ -4,8 +4,8 @@ import requests
 from scripts import get_file_extension, write_to_file
 
 
-def fetch_spacex_last_launch(parser_args):
-    url = f"https://api.spacexdata.com/v5/launches/{parser_args.id}"
+def fetch_spacex_last_launch(launch_id):
+    url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
     response = requests.get(url)
     links = response.json()['links']['flickr']['original']
     for link_name, link in enumerate(links):
@@ -19,7 +19,7 @@ def main():
                                                                            ' spacex по id запуска')
     parser.add_argument('id', default="5eb87d47ffd86e000604b38a", help="Введите id запуска", type=str)
     parser_args = parser.parse_args()
-    fetch_spacex_last_launch(parser_args)
+    fetch_spacex_last_launch(parser_args.id)
 
 
 if __name__ == "__main__":
