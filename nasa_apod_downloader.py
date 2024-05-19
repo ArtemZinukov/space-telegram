@@ -2,7 +2,7 @@ import argparse
 import requests
 from environs import Env
 
-from scripts import get_file_extension, writing_to_file
+from scripts import get_file_extension, write_to_file
 
 
 def fetch_nasa_apod(parser_args, token):
@@ -18,7 +18,7 @@ def fetch_nasa_apod(parser_args, token):
         url = image.get("url")
         file_extension = get_file_extension(url)
         filename = f"images/nasa_apod{link_name}{file_extension}"
-        writing_to_file(url, filename)
+        write_to_file(url, filename)
 
 
 def main():

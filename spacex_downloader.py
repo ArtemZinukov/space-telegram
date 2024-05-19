@@ -1,7 +1,7 @@
 import argparse
 import requests
 
-from scripts import get_file_extension, writing_to_file
+from scripts import get_file_extension, write_to_file
 
 
 def fetch_spacex_last_launch(parser_args):
@@ -11,7 +11,7 @@ def fetch_spacex_last_launch(parser_args):
     for link_name, link in enumerate(links):
         file_extension = get_file_extension(link)
         filename = f"images/spacex{link_name}{file_extension}"
-        writing_to_file(link, filename)
+        write_to_file(link, filename)
 
 
 def main():

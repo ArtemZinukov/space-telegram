@@ -9,7 +9,7 @@ def get_file_extension(url):
     return file_extension[1]
 
 
-def writing_to_file(url, filename, params=None):
+def write_to_file(url, filename, params=None):
     response = requests.get(url, params=params)
     response.raise_for_status()
     with open(filename, "wb") as file:

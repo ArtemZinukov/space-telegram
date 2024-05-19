@@ -4,7 +4,7 @@ from datetime import datetime
 import requests
 from environs import Env
 
-from scripts import writing_to_file
+from scripts import write_to_file
 
 
 def fetch_nasa_epic(parser_arg, token):
@@ -24,7 +24,7 @@ def fetch_nasa_epic(parser_arg, token):
         formated_date = formated_datetime.strftime("%Y/%m/%d")
         url = f"https://api.nasa.gov/EPIC/archive/natural/{formated_date}/png/{photo}.png"
         filename = f"images/nasa_epic{image_name}.png"
-        writing_to_file(url, filename, params)
+        write_to_file(url, filename, params)
         downloaded_image += 1
 
 
